@@ -309,6 +309,7 @@ y_pred = model.predict(X_test)
 
 # Generate confusion matrix
 cm = confusion_matrix(y_test, y_pred)
+st.subheader("Logistic regression confusion matrix")
 
 # Plot confusion matrix
 fig_cm, ax_cm = plt.subplots()
@@ -316,12 +317,14 @@ disp = ConfusionMatrixDisplay(confusion_matrix=cm)
 disp.plot(ax=ax_cm)
 ax_cm.set_title('Confusion Matrix')
 st.pyplot(fig_cm)
+st.subheader("Logistic regression ROC curve")
 
 # Plot ROC curve
 fig_roc, ax_roc = plt.subplots()
 RocCurveDisplay.from_estimator(model, X_test, y_test, ax=ax_roc)
 ax_roc.set_title('ROC Curve')
 st.pyplot(fig_roc)
+st.subheader("Logistic regression model coefficent")
 
 # Display model coefficients as a bar chart
 coefficients = pd.DataFrame({
