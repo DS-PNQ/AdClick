@@ -51,7 +51,11 @@ search_term = st.text_input("Tìm kiếm thông tin trong dữ liệu:", "")
 
 # Tải dữ liệu
 url = "https://raw.githubusercontent.com/DS-PNQ/ddb/refs/heads/main/ad_click_dataset.csv"
-data = pd.read_csv(url)
+try:
+    data = pd.read_csv(url)
+except Exception as e:
+    st.error(f"Error loading data: {e}")
+    st.stop()
 
 # Tìm kiếm trong dữ liệu nếu có từ khóa
 if search_term:
