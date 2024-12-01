@@ -4,6 +4,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
 from sklearn.impute import KNNImputer
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, RocCurveDisplay
 
 # Thiết lập tiêu đề ứng dụng
 st.set_page_config(page_title="Phân Tích Dữ Liệu Click Quảng Cáo", layout="wide")
@@ -285,10 +288,6 @@ sns.boxplot(x='time_of_day', y='age', hue='time_of_day', data=data, palette='Set
 ax.set_title('Độ tuổi theo thời gian trong ngày')
 plt.xticks(rotation=45)
 st.pyplot(fig)
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, RocCurveDisplay
 
 # Prepare the data
 X = data.drop('click', axis=1)  # Use all variables except the target
